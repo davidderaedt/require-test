@@ -1,0 +1,14 @@
+body {
+	padding-top: 60px;
+}
+
+#contacts li .selection{
+	background-color: #9999FF;
+	color:#FFFFFF;
+}
+
+#contacts
+{
+
+	font-size:1.2em;
+}

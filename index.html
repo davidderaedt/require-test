@@ -1,0 +1,98 @@
+<html>
+
+<head>
+
+	<title></title>
+
+	<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+	<link rel="stylesheet" href="css/styles.css">
+
+	<script data-main="scripts/main" src="scripts/libs/require/require.js"></script>	
+
+
+</head>
+
+<body>
+
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="container-fluid">
+          <a class="brand" href="#">Contact List</a>
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+          <p class="pull-right">Logged in as <a href="#">username</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div class="well">
+          <h4>Contacts</h4>
+
+          <ul id="contacts">
+ 
+          </ul>
+
+          <p><a class="btn primary large" id="createContactBt">Create</a></p>
+
+        </div>
+      </div>
+
+      <div class="content">
+        <!-- Main hero unit for a primary marketing message or call to action -->
+        <div class="hero-unit" >
+
+    		<div id="selectedContact"></div>
+
+          <form>
+
+            <fieldset>
+
+              <legend>Contact details</legend>
+
+              <div class="clearfix">
+                <label>ID</label>
+                <div class="input">
+                  <span class="uneditable-input" id="contactIdInput">Some value here</span>
+                </div>
+              </div><!-- /clearfix -->
+ 
+              <div class="clearfix">
+                <label for="firstnameInput">Firstname</label>
+                <div class="input">
+                 <input class="xlarge" id="firstnameInput" name="firstnameInput" size="30" type="text" />
+                </div>
+              </div><!-- /clearfix -->
+
+              <div class="clearfix">
+                <label for="lastnameInput">Lastname</label>
+                <div class="input">
+                 <input class="xlarge" id="lastnameInput" name="lastnameInput" size="30" type="text" />
+                </div>
+              </div><!-- /clearfix -->
+
+              <div class="actions">
+                <p>
+                  <a class="btn success large" id="saveContactBt">Save</a>
+                 <a class="btn danger large" id="removeContactBt">Remove</a>
+                </p>
+
+              </div>
+            </fieldset>
+
+          </form>
+
+             
+        </div>
+
+
+      </div>
+    </div>
+
+
+</body>
+
+</html>
