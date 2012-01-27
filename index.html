@@ -1,13 +1,14 @@
+<!DOCTYPE html>
 <html>
 
 <head>
 
-	<title></title>
+  <title></title>
 
-	<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
-	<link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
 
-	<script data-main="scripts/main" src="scripts/libs/require/require.js"></script>	
+  <script data-main="scripts/main" src="scripts/libs/require/require.js"></script>  
 
 
 </head>
@@ -28,11 +29,11 @@
     </div>
 
     <div class="container-fluid">
-      <div class="sidebar">
+      <div id="contactPanel" class="sidebar">
         <div class="well">
           <h4>Contacts</h4>
 
-          <ul id="contacts">
+          <ul>
  
           </ul>
 
@@ -45,7 +46,7 @@
         <!-- Main hero unit for a primary marketing message or call to action -->
         <div class="hero-unit" >
 
-    		<div id="selectedContact"></div>
+        <div id="selectedContact">
 
           <form>
 
@@ -77,19 +78,20 @@
               <div class="actions">
                 <p>
                   <a class="btn success large" id="saveContactBt">Save</a>
-                 <a class="btn danger large" id="removeContactBt">Remove</a>
+                  <a class="btn danger large" id="removeContactBt">Remove</a>
                 </p>
-
               </div>
+
             </fieldset>
 
           </form>
 
              
-        </div>
+        </div><!-- /selectedContact -->
 
 
       </div>
+
     </div>
 
 

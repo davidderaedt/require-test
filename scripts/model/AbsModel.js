@@ -1,14 +1,19 @@
-define(function(){
+define([
+"my/Observer"
+], 
+function(Observer){
 
 
-	function AbsModel (){
-	
+	function AbsModel(){
+
 	}
+	AbsModel.prototype =  new Observer();
 
 	AbsModel.prototype.toString = function(){
 		return "Object AbsModel";
 	};
 
 	return AbsModel;
+
 
 });

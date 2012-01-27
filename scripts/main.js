@@ -9,8 +9,8 @@ require.config({
 });
 
 
-require(["app"], function(app) {
+require(["appController"], function(appController) {
 
-	app.init();
+	appController.init();
 
 });

@@ -3,19 +3,21 @@ define(
 function(AbsModel){
 
 
-	return function Person (pFirstname, pLastname, pId){
+	var Person = function (pFirstname, pLastname, pId){
 	
-		var o=new AbsModel();
-		o.id=pId;
+		this.id=pId;
 
-		o.firstname= pFirstname;
-		o.lastname = pLastname;
+		this.firstname= pFirstname;
+		this.lastname = pLastname;
 
-		o.getFullName = function(){
-			return o.firstname +" "+o.lastname;
-		};
+	};
 
-		return o;
+	Person.prototype = new AbsModel();
+
+	Person.prototype.getFullName = function(){
+		return this.firstname +" "+this.lastname;		
 	}
+
+	return Person;
 
 });

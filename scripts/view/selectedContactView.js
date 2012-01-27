@@ -1,10 +1,11 @@
 define([
-"jquery"
+"jquery",
+"view/AbsView"
 ], 
-function ($) {
+function ($, AbsView) {
 
 
-	var o=$({});
+	var o=new AbsView();
 	o.el = $("#selectedContact");
 
 
@@ -42,10 +43,6 @@ function ($) {
 	o.render=function(){
 
 		var content="";
-
-		content+="<h1>"+ contact.getFullName()+"</h1>";
-
-		o.el.html(content);
 
 		$("#contactIdInput").html(contact.id);
 

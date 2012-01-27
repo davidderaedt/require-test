@@ -1,18 +1,14 @@
 define([
-"jquery"
+"my/Observer"
 ], 
-function($){
+function(Observer){
 
 
-	return function AbsView (){
+	function AbsView (){
 	
-		var o=$({});
-
-		o.toString = function(){
-			return "Object AbsView";
-		};
-
-		return o;
 	}
+	AbsView.prototype = new Observer();
+
+	return AbsView;
 
 });

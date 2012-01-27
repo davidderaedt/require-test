@@ -6,7 +6,7 @@ function ($, AbsView) {
 
 
 	var o= new AbsView();
-	o.el = $("#contacts");
+	o.el = $("#contactPanel");
 	o.contactCollect={};
 	o.selectedContact={};
 
@@ -19,7 +19,7 @@ function ($, AbsView) {
 	}
 
 	function createContactBtClickHandler(){
-
+		
 		o.trigger("createContact");
 
 	}
@@ -41,7 +41,8 @@ function ($, AbsView) {
 
 	o.render=function(){
 
-		o.el.html("");
+		var ul = o.el.find("ul");
+		ul.html("");
 		
 		$.each(o.contactCollect, function(index, contact){
 			console.log(contact.getFullName());
@@ -56,26 +57,29 @@ function ($, AbsView) {
 		var contactElt = $(document.createElement('li'));
  		contactElt.html('<li data-contactid="'+contact.id+'">'+contact.getFullName()+"</li>");
 
- 		o.el.append(contactElt);
+ 		var ul = o.el.find("ul");
+ 		ul.append(contactElt);
 
- 		$(contactElt).on("click", function(){
- 			o.setSelection(contact, true);
+ 		$(contactElt).on("click", function(evt){
+ 			o.UISelectHandler($(evt.target).attr("data-contactid"));
  		});		
+	}
 
- 		o.setSelection(contact, false);
+
+	o.UISelectHandler = function(pContactId){
+		console.log(pContactId);
+		o.trigger("selectContactId", pContactId);
 	}
 
 
 
-	o.setSelection=function (pContact, fromUI){
+	o.setSelection=function (pContact){
 
 		o.selectedContact = pContact;
-		var elt = $('[data-contactid="'+pContact.id+'"]');
 
+		var elt = $('[data-contactid="'+pContact.id+'"]');
 		$(".selection").removeClass("selection");
 		elt.addClass("selection");
-
-		if(fromUI==true) o.trigger("contactSelected");
 
 	}
  
