@@ -1,91 +1,89 @@
-define([
-"jquery",
-"view/AbsView"
-], 
-function ($, AbsView) {
+/*jslint vars: true, plusplus: true, devel: true, nomen: true, regexp: true, indent: 4, maxerr: 50 */
+/*global define, $, document */
+
+define(["jquery", "view/AbsView"], function ($, AbsView) {
+    "use strict";
+
+    var o = new AbsView();
+    o.el = $("#contactPanel");
+    o.contactCollect = {};
+    o.selectedContact = {};
+
+    
+    function createContactBtClickHandler() {
+        
+        o.trigger("createContact");
+
+    }
+    
+    o.initialize = function () {
+
+        console.log("contact list init");
+
+        $("#createContactBt").on("click", createContactBtClickHandler);
+
+    };
 
 
-	var o= new AbsView();
-	o.el = $("#contactPanel");
-	o.contactCollect={};
-	o.selectedContact={};
+    o.setContactCollec = function (pCollec) {
 
-	o.initialize= function (){
+        o.contactCollect = pCollec;
 
-		console.log("contact list init");
+        o.render();
 
-		$("#createContactBt").on("click", createContactBtClickHandler);
+    };
 
-	}
+    o.removeContact = function (pContact) {
 
-	function createContactBtClickHandler(){
-		
-		o.trigger("createContact");
+        var elt = $('[data-contactid="' + pContact.id + '"]');
+        $(elt).parent().remove();
 
-	}
+    };
 
-	o.setContactCollec=function (pCollec){
+    o.render = function () {
 
-		o.contactCollect = pCollec;
+        var ul = o.el.find("ul");
+        ul.html("");
+        
+        $.each(o.contactCollect, function (index, contact) {
+            console.log(contact.getFullName());
+            o.addContact(contact);
+        });
+    };
 
-		o.render();
+    o.addContact = function (contact) {
 
-	}
+        var contactElt = $(document.createElement('li'));
+        contactElt.html('<li data-contactid="' + contact.id + '">' + contact.getFullName() + "</li>");
 
-	o.removeContact=function(pContact){
+        var ul = o.el.find("ul");
+        ul.append(contactElt);
 
-		var elt = $('[data-contactid="'+pContact.id+'"]');
-		$(elt).parent().remove();
-
-	}
-
-	o.render=function(){
-
-		var ul = o.el.find("ul");
-		ul.html("");
-		
-		$.each(o.contactCollect, function(index, contact){
-			console.log(contact.getFullName());
- 			o.addContact(contact);
-
- 		});
-
-	}
-
-	o.addContact=function(contact){
-
-		var contactElt = $(document.createElement('li'));
- 		contactElt.html('<li data-contactid="'+contact.id+'">'+contact.getFullName()+"</li>");
-
- 		var ul = o.el.find("ul");
- 		ul.append(contactElt);
-
- 		$(contactElt).on("click", function(evt){
- 			o.UISelectHandler($(evt.target).attr("data-contactid"));
- 		});		
-	}
+        $(contactElt).on("click", function (evt) {
+            o.UISelectHandler($(evt.target).attr("data-contactid"));
+        });
+    };
 
 
-	o.UISelectHandler = function(pContactId){
-		console.log(pContactId);
-		o.trigger("selectContactId", pContactId);
-	}
+    o.UISelectHandler = function (pContactId) {
+        console.log(pContactId);
+        o.trigger("selectContactId", pContactId);
+    };
 
 
 
-	o.setSelection=function (pContact){
+    o.setSelection = function (pContact) {
 
-		o.selectedContact = pContact;
+        o.selectedContact = pContact;
 
-		var elt = $('[data-contactid="'+pContact.id+'"]');
-		$(".selection").removeClass("selection");
-		elt.addClass("selection");
+        var elt = $('[data-contactid="' + pContact.id + '"]');
+        $(".selection").removeClass("selection");
+        elt.addClass("selection");
 
-	}
+    };
  
- 	
- 	o.initialize();
+    o.initialize();
 
-	return o;
+    return o;
 
 });
