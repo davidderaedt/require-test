@@ -4,17 +4,16 @@
 * http://addyosmani.com/
 */
 
-define(
-function () {
+define(function () {
+    'use strict';
 
-
-    var Observer=function(){
+    var Observable = function () {
         this.topics = {};
         this.subUid = -1;
     };
 
 
-    Observer.prototype.trigger = function (topic, args) {
+    Observable.prototype.trigger = function (topic, args) {
 
         if (!this.topics[topic]) {
             return false;
@@ -32,7 +31,7 @@ function () {
 
     };
 
-     Observer.prototype.bind = function (topic, func) {
+     Observable.prototype.bind = function (topic, func) {
 
         if (!this.topics[topic]) {
             this.topics[topic] = [];
@@ -46,7 +45,7 @@ function () {
         return token;
     };
 
-     Observer.prototype.unbind = function (token) {
+     Observable.prototype.unbind = function (token) {
         for (var m in this.topics) {
             if (this.topics[m]) {
                 for (var i = 0, j = this.topics[m].length; i < j; i++) {
@@ -60,5 +59,5 @@ function () {
         return false;
     };
 
-    return Observer;
+    return Observable;
 });
